@@ -22,6 +22,10 @@ Route.get('/', () => {
 
 
 Route.get('/products', 'ProductController.index')
-Route.post('/products', 'ProductController.store')
+Route.post('/products', 'ProductController.store').middleware('auth')
 Route.get('/products/:slug', 'ProductController.getBySlug')
-Route.delete('/products/:id', 'ProductController.destroy')
+Route.delete('/products/:id', 'ProductController.destroy').middleware('auth')
+
+
+Route.post('/users','UserController.create')
+Route.post('/sessions','SessionController.create')
